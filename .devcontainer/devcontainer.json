@@ -1,0 +1,19 @@
+{
+	"name": "Go JWT Auth Dev Container",
+	"dockerComposeFile": "../docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces",
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"go.gopath": "/go"
+			},
+			"extensions": [
+				"golang.go",
+				"postmanlabs.vscode-postman"
+			]
+		}
+	},
+	"forwardPorts": [8000]
+}
+

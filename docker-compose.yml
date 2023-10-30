@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/go-auth
+    volumes:
+      - .:/workspaces:cached  
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongodb
+    networks:
+      - jwt-network
+    env_file: .env
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - jwt-network
+
+volumes:
+  mongodata:
+
+networks:
+  jwt-network:
+    driver: bridge
